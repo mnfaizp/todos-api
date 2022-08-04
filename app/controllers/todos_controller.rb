@@ -1,5 +1,5 @@
 class TodosController < ApplicationController
-    before_action :set_todo, only: [:update, :show, :destory]
+    before_action :set_todo, only: [:update, :show]
 
     # GET /todos
     def index
@@ -21,13 +21,14 @@ class TodosController < ApplicationController
     # PUT /todos/:id
     def update
         @todo.update(todo_params)
-        head: no_content
+        head :no_content
     end
     
     # DELETE /todos/:id
     def destroy
+        @todo = Todo.find(params[:id])
         @todo.destroy
-        head: no_content
+        head :no_content
     end
 
     private
