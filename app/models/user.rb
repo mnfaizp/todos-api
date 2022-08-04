@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-    had_secure_password
+    has_secure_password
 
     has_may :todos, foreign_key: :created_by
 
